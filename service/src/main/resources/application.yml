@@ -16,6 +16,8 @@ spring:
     username: root
     password: root
     type: com.zaxxer.hikari.HikariDataSource
+  profiles:
+    active: dev
 
 # =================================
 # = Logging
