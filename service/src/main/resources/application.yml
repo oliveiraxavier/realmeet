@@ -12,7 +12,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/bluemeet?createDatabaseIfNotExist=true&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/realmeet?createDatabaseIfNotExist=true&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: root
     type: com.zaxxer.hikari.HikariDataSource
@@ -24,8 +24,13 @@ spring:
 # =================================
 logging:
   level:
-    org.springframework: INFO
-    org.flywaydb: INFO
-    org.hibernate: INFO
-    org.apache: INFO
-    tomcat: INFO
+    org.springframework: ERROR
+    org.flywaydb: ERROR
+
+realmeet:
+  taskExecutor:
+    pool:
+      coreSize: 10
+      maxSize: 20
+      queueCapacity: 50
+      keepAliveSeconds: 60
