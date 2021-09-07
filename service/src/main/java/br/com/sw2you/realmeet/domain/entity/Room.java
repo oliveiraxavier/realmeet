@@ -1,6 +1,7 @@
 package br.com.sw2you.realmeet.domain.entity;
 
-import static java.util.Objects.*;
+import static java.util.Objects.hash;
+import static java.util.Objects.isNull;
 
 import java.util.Objects;
 import javax.persistence.*;

@@ -5,3 +5,11 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://realmeet-db.cdnzsnovozck.sa-east-1.rds.amazonaws.com:3306/realmeet?serverTimezone=UTC&useSSL=false
+
+realmeet:
+  taskExecutor:
+    pool:
+      coreSize: 10
+      maxSize: 20
+      queueCapacity: 50
+      keepAliveSeconds: 60
