@@ -2,8 +2,8 @@ openapi: 3.0.0
 info:
   version: 1.0.0
   title: Realmeet
-servers:
-  - url: '127.0.0.1:8080/v1'
+#servers:
+#  - url: '127.0.0.1:8080/v1'
 paths:
   /rooms/{id}:
     get:
