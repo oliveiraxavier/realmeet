@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.given;
 
+import br.com.sw2you.realmeet.api.model.CreateRoomDTO;
 import br.com.sw2you.realmeet.core.BaseUnitTest;
 import br.com.sw2you.realmeet.domain.entity.repository.RoomRepository;
 import br.com.sw2you.realmeet.exception.InvalidRequestException;
@@ -39,7 +40,7 @@ public class RoomValidatorUnitTest extends BaseUnitTest {
     void testValidateWhenRoomNameIsMissing() {
         var exception = assertThrows(
             InvalidRequestException.class,
-            () -> victim.validate(newCreateRoomDto().name(null))
+            () -> victim.validate((CreateRoomDTO) newCreateRoomDto().name(null))
         );
     }
 
@@ -47,7 +48,7 @@ public class RoomValidatorUnitTest extends BaseUnitTest {
     void testValidateWhenRoomNameExceedsLength() {
         var exception = assertThrows(
             InvalidRequestException.class,
-            () -> victim.validate(newCreateRoomDto().name(rightPad("X", ROOM_NAME_MAX_LENGTH + 1, "z")))
+            () -> victim.validate((CreateRoomDTO) newCreateRoomDto().name(rightPad("X", ROOM_NAME_MAX_LENGTH + 1, "z")))
         );
 
         assertEquals(1, exception.getValidationErrors().getNumberOfErrors());
@@ -65,7 +66,7 @@ public class RoomValidatorUnitTest extends BaseUnitTest {
     void testValidateWhenRoomSeatsAreMissing() {
         var exception = assertThrows(
             InvalidRequestException.class,
-            () -> victim.validate(newCreateRoomDto().seats(null))
+            () -> victim.validate((CreateRoomDTO) newCreateRoomDto().seats(null))
         );
 
         assertEquals(1, exception.getValidationErrors().getNumberOfErrors());
@@ -79,7 +80,7 @@ public class RoomValidatorUnitTest extends BaseUnitTest {
     void testValidateWhenRoomNameAreLessThanMinValue() {
         var exception = assertThrows(
             InvalidRequestException.class,
-            () -> victim.validate(newCreateRoomDto().seats(ROOM_SEATS_MIN_VALUE - 1))
+            () -> victim.validate((CreateRoomDTO) newCreateRoomDto().seats(ROOM_SEATS_MIN_VALUE - 1))
         );
 
         assertEquals(1, exception.getValidationErrors().getNumberOfErrors());
@@ -93,7 +94,7 @@ public class RoomValidatorUnitTest extends BaseUnitTest {
     void testValidateWhenRoomNameAreGreaterThanMaxValue() {
         var exception = assertThrows(
             InvalidRequestException.class,
-            () -> victim.validate(newCreateRoomDto().seats(ROOM_SEATS_MAX_VALUE + 2))
+            () -> victim.validate((CreateRoomDTO) newCreateRoomDto().seats(ROOM_SEATS_MAX_VALUE + 2))
         );
         assertEquals(1, exception.getValidationErrors().getNumberOfErrors());
         assertEquals(
