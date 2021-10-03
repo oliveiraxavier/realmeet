@@ -199,7 +199,7 @@ public class AllocationValidatorUnitTest extends BaseUnitTest {
     }
 
     @Test
-    void testValidateValideDateDuration() {
+    void testValidateValidDateDuration() {
         var exception = assertThrows(
             InvalidRequestException.class,
             () ->
@@ -207,11 +207,11 @@ public class AllocationValidatorUnitTest extends BaseUnitTest {
                     newCreateAllocationDto()
                         .subject(ALLOCATION_SUBJECT)
                         .startAt(now().plusDays(1))
-                        .endAt(now().plusDays(1).plusHours(1))
+                        .endAt(now().plusDays(1).plusHours(5))
                 )
         );
 
-        assertEquals(0, exception.getValidationErrors().getNumberOfErrors());
+        assertEquals(1, exception.getValidationErrors().getNumberOfErrors());
     }
 
     @Test
