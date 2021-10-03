@@ -1,4 +1,4 @@
-package br.com.sw2you.realmeet.domain.entity.repository;
+package br.com.sw2you.realmeet.domain.repository;
 
 import br.com.sw2you.realmeet.domain.entity.Room;
 import java.util.Optional;

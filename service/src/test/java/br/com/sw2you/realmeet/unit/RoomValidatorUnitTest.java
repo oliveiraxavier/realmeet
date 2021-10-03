@@ -11,7 +11,7 @@ import static org.mockito.BDDMockito.given;
 
 import br.com.sw2you.realmeet.api.model.CreateRoomDTO;
 import br.com.sw2you.realmeet.core.BaseUnitTest;
-import br.com.sw2you.realmeet.domain.entity.repository.RoomRepository;
+import br.com.sw2you.realmeet.domain.repository.RoomRepository;
 import br.com.sw2you.realmeet.exception.InvalidRequestException;
 import br.com.sw2you.realmeet.validator.RoomValidator;
 import br.com.sw2you.realmeet.validator.ValidationError;
@@ -52,10 +52,6 @@ public class RoomValidatorUnitTest extends BaseUnitTest {
         );
 
         assertEquals(1, exception.getValidationErrors().getNumberOfErrors());
-        assertEquals(
-            new ValidationError(ROOM_NAME, ROOM_NAME + EXCEEDS_MAX_LENGTH),
-            exception.getValidationErrors().getError(0)
-        );
         assertEquals(
             new ValidationError(ROOM_NAME, ROOM_NAME + EXCEEDS_MAX_LENGTH),
             exception.getValidationErrors().getError(0)

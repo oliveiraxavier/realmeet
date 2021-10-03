@@ -19,6 +19,7 @@ paths:
           schema:
             type: integer
             format: int64
+            minimum: 1
       responses:
         '200':
           description: 'OK'
@@ -41,6 +42,7 @@ paths:
           schema:
             type: integer
             format: int64
+            minimum: 1
       responses:
         '204':
           description: 'Deletado'
@@ -59,6 +61,7 @@ paths:
           schema:
             type: integer
             format: int64
+            minimum: 1
       requestBody:
         content:
           application/json:
@@ -99,6 +102,30 @@ paths:
         422:
           description: Unprocessable entity
           $ref: '#/components/responses/UnprocessableEntity'
+  /allocations:
+    post:
+      summary: 'Cria uma alocação'
+      operationId: createAllocation
+      tags:
+        - allocattion
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAllocationDTO'
+        required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllocationDTO'
+        404:
+          description: 'Not found'
+        422:
+          description: Unprocessable entity
+          $ref: '#/components/responses/UnprocessableEntity'
 components:
   schemas:
     UpdateRoomDTO:
@@ -108,7 +135,7 @@ components:
           type: string
         seats:
           type: integer
-          minimum: 0
+          minimum: 1
     CreateRoomDTO:
       type: object
       allOf:
@@ -122,6 +149,37 @@ components:
             id:
               type: integer
               format: int64
+              minimum: 1
+    CreateAllocationDTO:
+      type: object
+      properties:
+        subject:
+          type: string
+        startAt:
+          type: string
+          format: date-time
+        endAt:
+          type: string
+          format: date-time
+        roomId:
+          type: integer
+          format: int64
+          minimum: 1
+        employeeName:
+          type: string
+        employeeEmail:
+          type: string
+          format: email
+    AllocationDTO:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/CreateAllocationDTO'
+        - type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+              minimum: 1
     ResponseError:
       type: object
       required:

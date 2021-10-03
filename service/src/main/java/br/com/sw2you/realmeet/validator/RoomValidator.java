@@ -6,7 +6,7 @@ import static java.util.Objects.isNull;
 
 import br.com.sw2you.realmeet.api.model.CreateRoomDTO;
 import br.com.sw2you.realmeet.api.model.UpdateRoomDTO;
-import br.com.sw2you.realmeet.domain.entity.repository.RoomRepository;
+import br.com.sw2you.realmeet.domain.repository.RoomRepository;
 import java.util.Objects;
 import org.springframework.stereotype.Component;
 
