@@ -14,6 +14,7 @@ public class ValidatorConstants {
     public static final String MIN_VALUE = ".minValue";
     public static final String MAX_VALUE = ".maxValue";
     public static final String EXISTS_IN_DB = ".existsInDb";
+    public static final String ALLOCATION_ID = "id";
     public static final String ALLOCATION_SUBJECT = "subject";
     public static final int ALLOCATION_SUBJECT_MAX_LENGTH = 60;
     public static final String ALLOCATION_EMPLOYEE_NAME = "employeeName";

@@ -21,7 +21,7 @@ public class TestDataCreator {
             .newBuilder()
             .subject(DEFAULT_ALLOCATION_SUBJECT)
             .room(room)
-            .employee(Employee.newBuilder().name(DEFAULT_EMPLOYEER_NAME).name(DEFAULT_EMPLOYEER_EMAIL).build())
+            .employee(Employee.newBuilder().name(DEFAULT_EMPLOYEER_NAME).email(DEFAULT_EMPLOYEER_EMAIL).build())
             .startAt(DEFAULT_ALLOCATION_START_AT)
             .endAt(DEFAULT_ALLOCATION_END_AT);
     }

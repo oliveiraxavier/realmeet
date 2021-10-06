@@ -44,7 +44,7 @@ paths:
             format: int64
             minimum: 1
       responses:
-        '204':
+        204:
           description: 'Deletado'
         404:
           description: 'Not found'
@@ -107,7 +107,7 @@ paths:
       summary: 'Cria uma alocação'
       operationId: createAllocation
       tags:
-        - allocattion
+        - allocation
       requestBody:
         content:
           application/json:
@@ -121,6 +121,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AllocationDTO'
+        404:
+          description: 'Not found'
+        422:
+          description: Unprocessable entity
+          $ref: '#/components/responses/UnprocessableEntity'
+  /allocations/{id}:
+    delete:
+      summary: 'Deletes an allocation by id'
+      operationId: deleteAllocation
+      tags:
+        - allocation
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: 'Id of the allocation'
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      responses:
+        204:
+          description: 'Deleted Successfully'
         404:
           description: 'Not found'
         422:
